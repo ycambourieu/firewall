@@ -1,0 +1,5 @@
+# Vidage des règles
+	$cmd_iptables -F
+	$cmd_iptables -X
+	$cmd_iptables -t nat -F
+	$cmd_iptables -t nat -X

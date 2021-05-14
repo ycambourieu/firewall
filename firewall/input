@@ -1,0 +1,30 @@
+# Règles en entrée de base
+	$cmd_iptables -I INPUT -i lo -j ACCEPT
+	$cmd_iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+	$cmd_iptables -A INPUT -p icmp -j ACCEPT
+	
+# Règles en entrée de perso
+	# Administration SSH
+	$cmd_iptables -A INPUT -p tcp -i $WAN --dport 22 -j ACCEPT
+
+	# NETBIOS
+	$cmd_iptables -A INPUT -p udp -i $WAN --dport 22 -j ACCEPT
+
+	# Samba
+	$cmd_iptables -A INPUT -p tcp -i $WAN --dport 139 -j ACCEPT
+	$cmd_iptables -A INPUT -p tcp -i $WAN --dport 445 -j ACCEPT
+
+	# MiniDLNA
+	$cmd_iptables -A INPUT -p tcp -i $WAN --dport 8200 -j ACCEPT
+	$cmd_iptables -A INPUT -p tcp -i $WAN --dport 445 -j ACCEPT
+	$cmd_iptables -A INPUT -p tcp -i $WAN --dport 45011 -j ACCEPT
+
+	# WakeOnLAN
+	$cmd_iptables -A INPUT -p tcp -i $WAN --dport 7 -j ACCEPT
+	$cmd_iptables -A INPUT -p tcp -i $WAN --dport 9 -j ACCEPT
+	$cmd_iptables -A INPUT -p udp -i $WAN --dport 7 -j ACCEPT
+	$cmd_iptables -A INPUT -p udp -i $WAN --dport 9 -j ACCEPT
+
+	# Accès aux services Web HTTP et HTTPS
+	#$cmd_iptables -A INPUT -p tcp -i $WAN --dport 80 -j ACCEPT
+	#$cmd_iptables -A INPUT -p tcp -i $WAN --dport 443 -j ACCEPT

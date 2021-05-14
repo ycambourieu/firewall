@@ -1,0 +1,13 @@
+# Règles de blocage par block d'IP
+# Liste des blocklist de pays : http://www.ipdeny.com/ipblocks
+
+CPT="0"
+NB_IP=$(cat /etc/firewall/zones/*.zone | wc -l)
+
+for IP in $(cat /etc/firewall/zones/*.zone);do
+       	$cmd_iptables -A INPUT -i $WAN -s $IP -j DROP &> /dev/null
+	sleep 0.02
+	CPT=$(($CPT+1))
+	POURCENT="$((($CPT*100)/$NB_IP))"
+	echo "Chargement des blocklists : $CPT / $NB_IP - ($POURCENT%)"
+done

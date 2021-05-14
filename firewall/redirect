@@ -1,0 +1,5 @@
+# Règles de redirection de port
+	#$cmd_iptables -t nat -A PREROUTING -i $WAN -p tcp --dport 1723 -j DNAT --to-destination 192.168.73.1:1723
+
+# Exemple redirection Proxy
+	#$cmd_iptables -t nat -A PREROUTING -i $LAN -s 192.168.73.0/24 -p tcp --dport 80 -j REDIRECT --to-port 3128

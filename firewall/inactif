@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# Chargement des paramètres de configuration
+	firewall_dir=`dirname $0`
+	. $firewall_dir/firewall.conf
+
+# Remise à zero de la configuration iptables
+	. $firewall_dir/clean
+	$cmd_iptables -P INPUT ACCEPT
+	$cmd_iptables -P OUTPUT ACCEPT
+	$cmd_iptables -P FORWARD ACCEPT
+	if [ $active_redirect_when_inactif -eq "1" ];then
+		. $firewall_dir/redirect
+	fi	

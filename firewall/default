@@ -1,0 +1,8 @@
+# Règles par défaut
+	$cmd_iptables -P INPUT DROP
+	$cmd_iptables -P OUTPUT DROP
+	$cmd_iptables -P FORWARD DROP
+
+#        $cmd_ip6tables -P INPUT DROP
+#        $cmd_ip6tables -P OUTPUT DROP
+#        $cmd_ip6tables -P FORWARD DROP

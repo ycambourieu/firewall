@@ -1,0 +1,10 @@
+# Règles de traversée
+	$cmd_iptables -A FORWARD -i $WAN -o $LAN -m state --state RELATED,ESTABLISHED -j ACCEPT
+	$cmd_iptables -A FORWARD -i $LAN -o $WAN -j ACCEPT
+
+# Règles perso depuis WAN
+	$cmd_iptables -A FORWARD -i $WAN -o $PPTP -j ACCEPT
+	$cmd_iptables -A FORWARD -i $PPTP -o $WAN -j ACCEPT
+        $cmd_iptables -A FORWARD -i $LAN -o $PPTP -j ACCEPT
+        $cmd_iptables -A FORWARD -i $PPTP -o $LAN -j ACCEPT
+

@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+# Par YOHAN CAMBOURIEU
+#
+# Appel du fichier de conf
+	firewall_dir=`dirname $0`
+	. $firewall_dir/firewall.conf
+
+	. $firewall_dir/clean
+	. $firewall_dir/default
+
+	if [ $active_max_security -eq "1" ];then
+		. $firewall_dir/security
+	fi
+
+	if [ $active_masquerade -eq "1" ];then
+		. $firewall_dir/masquerade
+	fi
+
+	if [ $active_input -eq "1" ];then
+		. $firewall_dir/input
+	fi
+
+	if [ $active_output -eq "1" ];then
+		. $firewall_dir/output
+	fi
+
+	if [ $active_forward -eq "1" ];then
+		. $firewall_dir/forward
+	fi
+
+        if [ $active_redirect -eq "1" ];then
+                . $firewall_dir/redirect
+        fi
+
+	if [ $active_log -eq "1" ];then
+		. $firewall_dir/log
+	fi	
+
+	if [ $active_blocklists -eq "1" ];then
+		. $firewall_dir/blocklists 
+	fi
+
+
+	exit 0

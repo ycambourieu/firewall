@@ -1,0 +1,4 @@
+# Enregistrement des INPUT et FORWARD
+	$cmd_iptables -A INPUT -j LOG --log-prefix="drop-in"
+	$cmd_iptables -A OUTPUT -j LOG --log-prefix="drop-out"
+	$cmd_iptables -A FORWARD -j LOG --log-prefix="drop-fw" 

@@ -1,0 +1,8 @@
+# Règles en sortie de base
+	if [ $active_ping -eq "1" ];then
+		$cmd_iptables  -A OUTPUT -p icmp -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+	fi
+	$cmd_iptables -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+	
+# Règles en sortie perso
+#	$cmd_iptables -A OUTPUT -p gre -j ACCEPT
