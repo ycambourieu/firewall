@@ -23,7 +23,7 @@ Start the firewall :
 
 Stop the firewall :
 ```
-./firewall.sh start
+./firewall.sh stop
 ```
 
 Restart or reload rules : 
